@@ -60,17 +60,26 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
+  fonts:
+    - family: TTNorms
+      fonts:
+        - asset: assets/fonts/TTNorms-Black.otf
+        - asset: assets/fonts/TTNorms-BlackItalic.otf
+        - asset: assets/fonts/TTNorms-Bold.otf
+        - asset: assets/fonts/TTNorms-BoldItalic.otf
+        - asset: assets/fonts/TTNorms-ExtraBold.otf
+        - asset: assets/fonts/TTNorms-ExtraBoldItalic.otf
+        - asset: assets/fonts/TTNorms-ExtraLight.otf
+        - asset: assets/fonts/TTNorms-ExtraLightItalic.otf
+        - asset: assets/fonts/TTNorms-Heavy.otf
+        - asset: assets/fonts/TTNorms-HeavyItalic.otf
+        - asset: assets/fonts/TTNorms-Light.otf
+        - asset: assets/fonts/TTNorms-LightItalic.otf
+        - asset: assets/fonts/TTNorms-Medium.otf
+        - asset: assets/fonts/TTNorms-MediumItalic.otf
+        - asset: assets/fonts/TTNorms-Regular.otf
+        - asset: assets/fonts/TTNorms-Thin.otf
+        - asset: assets/fonts/TTNorms-ThinItalic.otf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
