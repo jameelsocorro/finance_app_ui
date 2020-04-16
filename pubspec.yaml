@@ -32,6 +32,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  carousel_slider: ^2.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -54,6 +55,10 @@ flutter:
     - assets/icons/more.png
     - assets/icons/playstation.png
     - assets/icons/plus.png
+    - assets/icons/visa.png
+    - assets/images/avatar.png
+    - assets/images/card_bg.png
+    - assets/images/card_bg_alt.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -86,6 +91,24 @@ flutter:
         - asset: assets/fonts/TTNorms-Regular.otf
         - asset: assets/fonts/TTNorms-Thin.otf
         - asset: assets/fonts/TTNorms-ThinItalic.otf
+    - family: Muli
+      fonts:
+        - asset: assets/fonts/Muli-Black.ttf
+        - asset: assets/fonts/Muli-BlackItalic.ttf
+        - asset: assets/fonts/Muli-Bold.ttf
+        - asset: assets/fonts/Muli-BoldItalic.ttf
+        - asset: assets/fonts/Muli-ExtraBold.ttf
+        - asset: assets/fonts/Muli-ExtraBoldItalic.ttf
+        - asset: assets/fonts/Muli-ExtraLight.ttf
+        - asset: assets/fonts/Muli-ExtraLightItalic.ttf
+        - asset: assets/fonts/Muli-Italic.ttf        
+        - asset: assets/fonts/Muli-Light.ttf
+        - asset: assets/fonts/Muli-LightItalic.ttf
+        - asset: assets/fonts/Muli-Medium.ttf
+        - asset: assets/fonts/Muli-MediumItalic.ttf
+        - asset: assets/fonts/Muli-Regular.ttf
+        - asset: assets/fonts/Muli-SemiBold.ttf
+        - asset: assets/fonts/Muli-SemiBoldItalic.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
