@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="Down_Icon" data-name="Down Icon" transform="translate(24) rotate(90)">
+    <rect id="Shape" width="24" height="24" fill="rgba(0,0,0,0)"/>
+    <path id="Combined_Shape" data-name="Combined Shape" d="M.293.293a1,1,0,0,0,0,1.415L7.778,9.193H1.707a1,1,0,1,0,0,2h8.485a1,1,0,0,0,1-.957L11.545,2.1a1,1,0,1,0-2-.087L9.292,7.878,1.707.293a1,1,0,0,0-1.414,0Z" transform="translate(6.404 5.904)" fill="#5bda8c"/>
+  </g>
+</svg>

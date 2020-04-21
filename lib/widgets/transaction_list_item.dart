@@ -1,6 +1,5 @@
-import 'package:intl/intl.dart';
-import 'package:finance_app_ui/models/transaction_model.dart';
 import 'package:flutter/material.dart';
+import 'package:finance_app_ui/models/transaction_model.dart';
 
 class TransactionListItem extends StatelessWidget {
   final Transaction transaction;
@@ -65,10 +64,7 @@ class TransactionListItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
               Text(
-                this.transaction.value.isNegative
-                    ? NumberFormat.simpleCurrency()
-                        .format(this.transaction.value)
-                    : '+${NumberFormat.simpleCurrency().format(this.transaction.value)}',
+                '${this.transaction.value.isNegative ? '-' : '+'}\$${this.transaction.value}',
                 style: TextStyle(
                     color: this.transaction.value.isNegative
                         ? Color(0xFFEE6B8D)
