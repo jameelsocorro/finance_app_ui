@@ -1,6 +1,8 @@
 import 'package:finance_app_ui/models/card_detail_model.dart';
 import 'package:finance_app_ui/widgets/bank_card_field.dart';
 import 'package:finance_app_ui/widgets/bank_card_text.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:flutter/material.dart';
 
 class BankCard extends StatelessWidget {
@@ -12,7 +14,7 @@ class BankCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      margin: EdgeInsets.only(top: 16, bottom: 60, left: 10, right: 10),
+      margin: EdgeInsets.only(top: 20, bottom: 60, left: 10, right: 10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         image: DecorationImage(
@@ -28,7 +30,7 @@ class BankCard extends StatelessWidget {
         ],
       ),
       child: Padding(
-        padding: EdgeInsets.all(24),
+        padding: EdgeInsets.all(20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,7 +52,7 @@ class BankCard extends StatelessWidget {
             ),
             BankCardText(
               this.cardDetail.number,
-              fontSize: 22,
+              fontSize: ScreenUtil().setSp(22),
               fontWeight: FontWeight.w600,
             ),
             Row(

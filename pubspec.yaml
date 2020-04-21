@@ -33,6 +33,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   intl: ^0.16.1
+  flutter_screenutil: ^1.0.2
   carousel_slider: ^2.0.0
 
 # For information on the generic Dart part of this file, see the
@@ -73,43 +74,16 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: TTNorms
-      fonts:
-        - asset: assets/fonts/TTNorms-Black.otf
-        - asset: assets/fonts/TTNorms-BlackItalic.otf
-        - asset: assets/fonts/TTNorms-Bold.otf
-        - asset: assets/fonts/TTNorms-BoldItalic.otf
-        - asset: assets/fonts/TTNorms-ExtraBold.otf
-        - asset: assets/fonts/TTNorms-ExtraBoldItalic.otf
-        - asset: assets/fonts/TTNorms-ExtraLight.otf
-        - asset: assets/fonts/TTNorms-ExtraLightItalic.otf
-        - asset: assets/fonts/TTNorms-Heavy.otf
-        - asset: assets/fonts/TTNorms-HeavyItalic.otf
-        - asset: assets/fonts/TTNorms-Light.otf
-        - asset: assets/fonts/TTNorms-LightItalic.otf
-        - asset: assets/fonts/TTNorms-Medium.otf
-        - asset: assets/fonts/TTNorms-MediumItalic.otf
-        - asset: assets/fonts/TTNorms-Regular.otf
-        - asset: assets/fonts/TTNorms-Thin.otf
-        - asset: assets/fonts/TTNorms-ThinItalic.otf
     - family: Muli
-      fonts:
-        - asset: assets/fonts/Muli-Black.ttf
-        - asset: assets/fonts/Muli-BlackItalic.ttf
-        - asset: assets/fonts/Muli-Bold.ttf
-        - asset: assets/fonts/Muli-BoldItalic.ttf
-        - asset: assets/fonts/Muli-ExtraBold.ttf
-        - asset: assets/fonts/Muli-ExtraBoldItalic.ttf
-        - asset: assets/fonts/Muli-ExtraLight.ttf
-        - asset: assets/fonts/Muli-ExtraLightItalic.ttf
-        - asset: assets/fonts/Muli-Italic.ttf        
-        - asset: assets/fonts/Muli-Light.ttf
-        - asset: assets/fonts/Muli-LightItalic.ttf
-        - asset: assets/fonts/Muli-Medium.ttf
-        - asset: assets/fonts/Muli-MediumItalic.ttf
+      fonts:        
         - asset: assets/fonts/Muli-Regular.ttf
         - asset: assets/fonts/Muli-SemiBold.ttf
-        - asset: assets/fonts/Muli-SemiBoldItalic.ttf
+          weight: 600
+    - family: TTNorms
+      fonts:        
+        - asset: assets/fonts/TTNorms-Regular.ttf
+        - asset: assets/fonts/TTNorms-Medium.ttf
+          weight: 500
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

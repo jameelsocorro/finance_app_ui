@@ -4,6 +4,7 @@ import 'package:finance_app_ui/widgets/bank_card.dart';
 import 'package:finance_app_ui/widgets/transaction_list_item.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -50,22 +51,24 @@ class _HomeScreenState extends State<HomeScreen> {
   _buildCarousel() {
     return Stack(
       children: <Widget>[
-        CarouselSlider.builder(
-          options: CarouselOptions(
-            height: 250,
-            aspectRatio: 16 / 9,
-            viewportFraction: 0.8,
-            initialPage: _cardIndex,
-            enlargeCenterPage: true,
-            onPageChanged: (index, reason) {
-              setState(() {
-                _cardIndex = index;
-              });
-            },
+        Container(
+          child: CarouselSlider.builder(
+            options: CarouselOptions(
+              height: 250,
+              aspectRatio: 16 / 9,
+              viewportFraction: 0.8,
+              initialPage: _cardIndex,
+              enlargeCenterPage: true,
+              onPageChanged: (index, reason) {
+                setState(() {
+                  _cardIndex = index;
+                });
+              },
+            ),
+            itemCount: cardsMockData.length,
+            itemBuilder: (BuildContext context, int index) =>
+                BankCard(cardsMockData[index]),
           ),
-          itemCount: cardsMockData.length,
-          itemBuilder: (BuildContext context, int index) =>
-              BankCard(cardsMockData[index]),
         ),
         Positioned(
           bottom: 32,
@@ -184,6 +187,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.init(context, width: 375, height: 812, allowFontScaling: true);
     return Scaffold(
       backgroundColor: Color(0xFFFBF8FF),
       body: Stack(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BankCardText extends StatelessWidget {
   final String text;
@@ -14,11 +15,11 @@ class BankCardText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      this.text,
+      this.text,      
       style: TextStyle(
         color: Colors.white,
         fontFamily: 'TTNorms',
-        fontSize: this.fontSize,
+        fontSize: ScreenUtil().setSp(this.fontSize),
         fontWeight: this.fontWeight,
         shadows: [
           BoxShadow(
