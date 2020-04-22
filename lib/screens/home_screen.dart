@@ -2,7 +2,7 @@ import 'package:finance_app_ui/constants.dart';
 import 'package:finance_app_ui/data/cards_data.dart';
 import 'package:finance_app_ui/data/transactions_data.dart';
 import 'package:finance_app_ui/widgets/bank_card.dart';
-import 'package:finance_app_ui/widgets/transaction_list_item.dart';
+import 'package:finance_app_ui/widgets/transaction_item.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,18 +24,20 @@ class _HomeScreenState extends State<HomeScreen> {
         children: <Widget>[
           SvgPicture.asset('assets/icons/menu.svg'),
           Container(
+            height: kSpacingUnit.h * 4,
+            width: kSpacingUnit.h * 4,
             decoration: BoxDecoration(
+              shape: BoxShape.circle,
               boxShadow: [
                 BoxShadow(
                   color: kShadowColor1,
-                  blurRadius: kSpacingUnit.w * 2,
-                  offset: Offset(0, kSpacingUnit.w),
+                  blurRadius: kSpacingUnit * 2,
+                  offset: Offset(0, kSpacingUnit.h),
                 ),
               ],
-            ),
-            child: CircleAvatar(
-              radius: kSpacingUnit.w * 2,
-              backgroundImage: AssetImage('assets/images/avatar.png'),
+              image: DecorationImage(
+                image: AssetImage('assets/images/avatar.png'),
+              ),
             ),
           )
         ],
@@ -46,43 +48,41 @@ class _HomeScreenState extends State<HomeScreen> {
   _buildCarousel() {
     return Stack(
       children: <Widget>[
-        Container(
-          child: CarouselSlider.builder(
-            options: CarouselOptions(
-              height: 250,
-              aspectRatio: 16 / 9,
-              viewportFraction: 0.8,
-              initialPage: _cardIndex,
-              enlargeCenterPage: true,
-              onPageChanged: (index, reason) {
-                setState(() {
-                  _cardIndex = index;
-                });
-              },
-            ),
-            itemCount: cardsMockData.length,
-            itemBuilder: (BuildContext context, int index) =>
-                BankCard(cardsMockData[index]),
+        CarouselSlider.builder(
+          options: CarouselOptions(
+            height: 220,
+            aspectRatio: 16 / 9,
+            viewportFraction: 0.8,
+            initialPage: _cardIndex,
+            enlargeCenterPage: true,
+            onPageChanged: (index, reason) {
+              setState(() {
+                _cardIndex = index;
+              });
+            },
           ),
+          itemCount: cardsMockData.length,
+          itemBuilder: (BuildContext context, int index) =>
+              BankCard(cardsMockData[index]),
         ),
         Positioned(
-          bottom: 32,
+          bottom: kSpacingUnit.h * 2,
           left: 0,
           right: 0,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: cardsMockData.map((card) {
               return Container(
-                width: 8.0,
-                height: 8.0,
-                margin: EdgeInsets.symmetric(horizontal: 4),
+                width: kSpacingUnit.h,
+                height: kSpacingUnit.h,
+                margin: EdgeInsets.symmetric(horizontal: kSpacingUnit.w / 2),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: cardsMockData[_cardIndex].number == card.number
-                      ? Color(0xFF5D92EB)
-                      : Colors.white,
+                      ? kPrimaryColor
+                      : Colors.transparent,
                   border: Border.all(
-                    color: Color(0xFF5D92EB),
+                    color: kPrimaryColor,
                     width: 1.5,
                   ),
                 ),
@@ -98,35 +98,28 @@ class _HomeScreenState extends State<HomeScreen> {
     return Column(
       children: <Widget>[
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          padding: EdgeInsets.symmetric(
+            vertical: kSpacingUnit.h,
+            horizontal: kSpacingUnit.w * 2,
+          ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Text(
                 'Cards',
-                style: TextStyle(
-                  color: Color(0xFF151C2A),
-                  fontSize: 24,
-                  fontWeight: FontWeight.w600,
-                ),
+                style: kHeadingTextStyle,
               ),
-              InkWell(
-                onTap: () {},
-                child: Row(
-                  children: <Widget>[
-                    Text(
-                      'Add New',
-                      style: TextStyle(
-                        color: Color(0xFF7E8EAA),
-                        fontSize: 13,
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 8),
-                      child: SvgPicture.asset('assets/icons/plus.svg'),
-                    ),
-                  ],
-                ),
+              Row(
+                children: <Widget>[
+                  Text(
+                    'Add New',
+                    style: kButtonTextStyle,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: kSpacingUnit.w),
+                    child: SvgPicture.asset('assets/icons/plus.svg'),
+                  ),
+                ],
               )
             ],
           ),
@@ -141,21 +134,22 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Column(
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            padding: EdgeInsets.symmetric(
+              horizontal: kSpacingUnit.w * 2,
+            ).copyWith(
+              top: kSpacingUnit.h * 2,
+              bottom: kSpacingUnit.h,
+            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
                   'Transactions',
-                  style: TextStyle(
-                    color: Color(0xFF151C2A),
-                    fontSize: 24,
-                    fontWeight: FontWeight.w600,
-                  ),
+                  style: kHeadingTextStyle,
                 ),
-                InkWell(
-                  onTap: () {},
-                  child: SvgPicture.asset('assets/icons/more.svg'),
+                SvgPicture.asset(
+                  'assets/icons/more.svg',
+                  color: kTextSecondaryColor,
                 )
               ],
             ),
@@ -164,7 +158,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: ListView.builder(
               itemCount: transactionsMockData.length,
               itemBuilder: (BuildContext context, index) =>
-                  TransactionListItem(transactionsMockData[index]),
+                  TransactionItem(transactionsMockData[index]),
             ),
           )
         ],
@@ -184,8 +178,8 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             children: <Widget>[
               this._buildHeader(),
-              // this._buildCards(),
-              // this._buildTransactions(),
+              this._buildCards(),
+              this._buildTransactions(),
             ],
           ),
         ),

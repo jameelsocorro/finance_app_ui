@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 //Spacing
 const kSpacingUnit = 10.0;
@@ -14,44 +15,44 @@ const kBackgroundColor = Color(0xFFFBF8FF);
 const kShadowColor1 = Color.fromRGBO(149, 190, 207, 0.50);
 const kShadowColor2 = Color(0xFFCFECF8);
 const kShadowColor3 = Color.fromRGBO(0, 0, 0, 0.10);
+const kShadowColor4 = Color.fromRGBO(207, 236, 248, 0.50);
 
 // My Text Styles
-const kHeadingTextStyle = TextStyle(
-  fontSize: 24,
+final kHeadingTextStyle = TextStyle(  
+  fontSize: ScreenUtil().setSp(24),
   color: kTextColor,
   fontWeight: FontWeight.w600,
 );
 
-const kSubheaderTextStyle = TextStyle(
-  fontSize: 20,
+final kSubheaderTextStyle = TextStyle(
+  fontSize: ScreenUtil().setSp(20),
   color: kTextColor,
   fontWeight: FontWeight.w600,
 );
 
-const kCardTitleTextStyle = TextStyle(
+final kTitleTextStyle = TextStyle(  
+  fontSize: ScreenUtil().setSp(16),
+  color: kTextColor,
+);
+
+final kButtonTextStyle = TextStyle(
+  fontSize: ScreenUtil().setSp(13),
+  color: kTextSecondaryColor,
+);
+
+final kCaptionTextStyle = TextStyle(
+  fontSize: ScreenUtil().setSp(10),
+  color: kTextSecondaryColor,
+);
+
+final kCardTextStyle = TextStyle(
   fontFamily: 'TTNorms',
-  fontSize: 22,
-  color: Colors.white,  
-  fontWeight: FontWeight.w500,  
-);
-
-const kCardFieldTextStyle = TextStyle(
-  fontFamily: 'TTNorms',
-  fontSize: 14,
-  color: Colors.white,    
-);
-
-const kTitleTextStyle = TextStyle(
-  fontSize: 16,
-  color: kTextColor,  
-);
-
-const kButtonTextStyle = TextStyle(
-  fontSize: 13,
-  color: kTextSecondaryColor,  
-);
-
-const kCaptionTextStyle = TextStyle(
-  fontSize: 10,
-  color: kTextSecondaryColor,  
+  color: Colors.white,
+  shadows: [
+    BoxShadow(
+      color: kShadowColor3,
+      blurRadius: kSpacingUnit.h,
+      offset: Offset(0, kSpacingUnit.h * 0.5),
+    ),
+  ],
 );
