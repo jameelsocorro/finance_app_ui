@@ -48,15 +48,18 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/icons/bank.png
-    - assets/icons/building.png
-    - assets/icons/coffee.png
-    - assets/icons/menu.png
-    - assets/icons/more_white.png
-    - assets/icons/more.png
-    - assets/icons/playstation.png
-    - assets/icons/plus.png
-    - assets/icons/visa.png
+    - assets/icons/arrow_down.svg
+    - assets/icons/arrow_left.svg
+    - assets/icons/arrow_right.svg
+    - assets/icons/arrow_up.svg    
+    - assets/icons/bank.svg
+    - assets/icons/building.svg
+    - assets/icons/coffee.svg
+    - assets/icons/menu.svg    
+    - assets/icons/more.svg
+    - assets/icons/playstation.svg
+    - assets/icons/plus.svg
+    - assets/icons/visa.svg
     - assets/images/avatar.png
     - assets/images/card_bg.png
     - assets/images/card_bg_alt.png
@@ -80,8 +83,8 @@ flutter:
           weight: 600
     - family: TTNorms
       fonts:        
-        - asset: assets/fonts/TTNorms-Regular.ttf
-        - asset: assets/fonts/TTNorms-Medium.ttf
+        - asset: assets/fonts/TTNorms-Regular.otf
+        - asset: assets/fonts/TTNorms-Medium.otf
           weight: 500
   #
   # For details regarding fonts from package dependencies,

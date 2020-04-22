@@ -1,3 +1,4 @@
+import 'package:finance_app_ui/constants.dart';
 import 'package:finance_app_ui/data/cards_data.dart';
 import 'package:finance_app_ui/data/transactions_data.dart';
 import 'package:finance_app_ui/widgets/bank_card.dart';
@@ -5,6 +6,7 @@ import 'package:finance_app_ui/widgets/transaction_list_item.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -16,30 +18,23 @@ class _HomeScreenState extends State<HomeScreen> {
 
   _buildHeader() {
     return Padding(
-      padding: EdgeInsets.all(16),
+      padding: EdgeInsets.all(kSpacingUnit.w * 2),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          InkWell(
-            onTap: () {},
-            child: Image.asset(
-              'assets/icons/menu.png',
-              height: 15,
-              width: 20,
-            ),
-          ),
+          SvgPicture.asset('assets/icons/menu.svg'),
           Container(
             decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(
-                  color: Color.fromRGBO(149, 190, 207, 0.50),
-                  blurRadius: 12,
-                  offset: Offset(-2, 4),
+                  color: kShadowColor1,
+                  blurRadius: kSpacingUnit.w * 2,
+                  offset: Offset(0, kSpacingUnit.w),
                 ),
               ],
             ),
             child: CircleAvatar(
-              radius: 16,
+              radius: kSpacingUnit.w * 2,
               backgroundImage: AssetImage('assets/images/avatar.png'),
             ),
           )
@@ -128,11 +123,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 8),
-                      child: Image.asset(
-                        'assets/icons/plus.png',
-                        width: 13,
-                        height: 13,
-                      ),
+                      child: SvgPicture.asset('assets/icons/plus.svg'),
                     ),
                   ],
                 ),
@@ -164,11 +155,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 InkWell(
                   onTap: () {},
-                  child: Image.asset(
-                    'assets/icons/more.png',
-                    height: 4,
-                    width: 16,
-                  ),
+                  child: SvgPicture.asset('assets/icons/more.svg'),
                 )
               ],
             ),
@@ -188,32 +175,50 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context, width: 375, height: 812, allowFontScaling: true);
+
     return Scaffold(
-      backgroundColor: Color(0xFFFBF8FF),
-      body: Stack(
-        fit: StackFit.expand,
-        children: <Widget>[
-          Positioned(
-            right: 0,
-            left: MediaQuery.of(context).size.width - 135,
-            top: -50,
-            bottom: 0,
-            child: Container(
-              color: Colors.white,
-            ),
+      backgroundColor: Colors.white,
+      body: AppContent(
+        child: SafeArea(
+          bottom: false,
+          child: Column(
+            children: <Widget>[
+              this._buildHeader(),
+              // this._buildCards(),
+              // this._buildTransactions(),
+            ],
           ),
-          SafeArea(
-            bottom: false,
-            child: Column(
-              children: <Widget>[
-                this._buildHeader(),
-                this._buildCards(),
-                this._buildTransactions(),
-              ],
-            ),
-          ),
-        ],
+        ),
       ),
+    );
+  }
+}
+
+class AppContent extends StatelessWidget {
+  final Widget child;
+
+  const AppContent({
+    Key key,
+    this.child,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: <Widget>[
+        Container(
+          decoration: BoxDecoration(
+            color: kBackgroundColor,
+            border: Border(
+              right: BorderSide(
+                color: Colors.white,
+                width: 135,
+              ),
+            ),
+          ),
+        ),
+        this.child,
+      ],
     );
   }
 }

@@ -4,6 +4,7 @@ import 'package:finance_app_ui/widgets/bank_card_text.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class BankCard extends StatelessWidget {
   final CardDetail cardDetail;
@@ -38,15 +39,10 @@ class BankCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Image.asset(
-                  'assets/icons/visa.png',
-                  height: 15,
-                  width: 50,
-                ),
-                Image.asset(
-                  'assets/icons/more_white.png',
-                  height: 4,
-                  width: 16,
+                SvgPicture.asset('assets/icons/visa.svg'),
+                SvgPicture.asset(
+                  'assets/icons/more.svg',
+                  color: Colors.white,
                 ),
               ],
             ),
