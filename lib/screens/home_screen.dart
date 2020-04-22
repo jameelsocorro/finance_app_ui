@@ -1,12 +1,15 @@
 import 'package:finance_app_ui/constants.dart';
 import 'package:finance_app_ui/data/cards_data.dart';
 import 'package:finance_app_ui/data/transactions_data.dart';
+import 'package:finance_app_ui/screens/account_screen.dart';
+import 'package:finance_app_ui/widgets/app_content.dart';
 import 'package:finance_app_ui/widgets/bank_card.dart';
 import 'package:finance_app_ui/widgets/transaction_item.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:page_transition/page_transition.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -16,37 +19,75 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _cardIndex = 1;
 
-  _buildHeader() {
-    return Padding(
+  @override
+  Widget build(BuildContext context) {
+    ScreenUtil.init(context, width: 375, height: 812, allowFontScaling: true);
+
+    var header = Padding(
       padding: EdgeInsets.all(kSpacingUnit.w * 2),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           SvgPicture.asset('assets/icons/menu.svg'),
-          Container(
-            height: kSpacingUnit.h * 4,
-            width: kSpacingUnit.h * 4,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              boxShadow: [
-                BoxShadow(
-                  color: kShadowColor1,
-                  blurRadius: kSpacingUnit * 2,
-                  offset: Offset(0, kSpacingUnit.h),
+          InkWell(
+            onTap: () => Navigator.push(
+              context,
+              PageTransition(
+                type: PageTransitionType.fade,
+                child: AccountScreen(),
+              ),
+            ),
+            child: Container(
+              height: kSpacingUnit.w * 4,
+              width: kSpacingUnit.w * 4,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                boxShadow: [
+                  BoxShadow(
+                    color: kShadowColor1,
+                    blurRadius: kSpacingUnit * 2,
+                    offset: Offset(0, kSpacingUnit.w),
+                  ),
+                ],
+                image: DecorationImage(
+                  image: AssetImage('assets/images/avatar.png'),
                 ),
-              ],
-              image: DecorationImage(
-                image: AssetImage('assets/images/avatar.png'),
               ),
             ),
           )
         ],
       ),
     );
-  }
 
-  _buildCarousel() {
-    return Stack(
+    var cardHeading = Padding(
+      padding: EdgeInsets.symmetric(
+        vertical: kSpacingUnit.w,
+        horizontal: kSpacingUnit.w * 2,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Text(
+            'Cards',
+            style: kHeadingTextStyle,
+          ),
+          Row(
+            children: <Widget>[
+              Text(
+                'Add New',
+                style: kBodyTextStyle,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: kSpacingUnit.w),
+                child: SvgPicture.asset('assets/icons/plus.svg'),
+              ),
+            ],
+          )
+        ],
+      ),
+    );
+
+    var cardCarousel = Stack(
       children: <Widget>[
         CarouselSlider.builder(
           options: CarouselOptions(
@@ -66,15 +107,15 @@ class _HomeScreenState extends State<HomeScreen> {
               BankCard(cardsMockData[index]),
         ),
         Positioned(
-          bottom: kSpacingUnit.h * 2,
+          bottom: kSpacingUnit.w * 2,
           left: 0,
           right: 0,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: cardsMockData.map((card) {
               return Container(
-                width: kSpacingUnit.h,
-                height: kSpacingUnit.h,
+                width: kSpacingUnit.w,
+                height: kSpacingUnit.w,
                 margin: EdgeInsets.symmetric(horizontal: kSpacingUnit.w / 2),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
@@ -92,83 +133,36 @@ class _HomeScreenState extends State<HomeScreen> {
         )
       ],
     );
-  }
 
-  _buildCards() {
-    return Column(
-      children: <Widget>[
-        Padding(
-          padding: EdgeInsets.symmetric(
-            vertical: kSpacingUnit.h,
-            horizontal: kSpacingUnit.w * 2,
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Text(
-                'Cards',
-                style: kHeadingTextStyle,
-              ),
-              Row(
-                children: <Widget>[
-                  Text(
-                    'Add New',
-                    style: kButtonTextStyle,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: kSpacingUnit.w),
-                    child: SvgPicture.asset('assets/icons/plus.svg'),
-                  ),
-                ],
-              )
-            ],
-          ),
-        ),
-        _buildCarousel(),
-      ],
-    );
-  }
-
-  _buildTransactions() {
-    return Expanded(
-      child: Column(
+    var transactionHeading = Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: kSpacingUnit.w * 2,
+      ).copyWith(
+        top: kSpacingUnit.w * 2,
+        bottom: kSpacingUnit.w,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: kSpacingUnit.w * 2,
-            ).copyWith(
-              top: kSpacingUnit.h * 2,
-              bottom: kSpacingUnit.h,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text(
-                  'Transactions',
-                  style: kHeadingTextStyle,
-                ),
-                SvgPicture.asset(
-                  'assets/icons/more.svg',
-                  color: kTextSecondaryColor,
-                )
-              ],
-            ),
+          Text(
+            'Transactions',
+            style: kHeadingTextStyle,
           ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: transactionsMockData.length,
-              itemBuilder: (BuildContext context, index) =>
-                  TransactionItem(transactionsMockData[index]),
-            ),
+          SvgPicture.asset(
+            'assets/icons/more.svg',
+            color: kTextSecondaryColor,
           )
         ],
       ),
     );
-  }
 
-  @override
-  Widget build(BuildContext context) {
-    ScreenUtil.init(context, width: 375, height: 812, allowFontScaling: true);
+    var transactions = Expanded(
+      child: ListView.builder(
+        itemCount: transactionsMockData.length,
+        itemBuilder: (BuildContext context, index) =>
+            TransactionItem(transactionsMockData[index]),
+      ),
+    );
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -177,42 +171,15 @@ class _HomeScreenState extends State<HomeScreen> {
           bottom: false,
           child: Column(
             children: <Widget>[
-              this._buildHeader(),
-              this._buildCards(),
-              this._buildTransactions(),
+              header,
+              cardHeading,
+              cardCarousel,
+              transactionHeading,
+              transactions,
             ],
           ),
         ),
       ),
-    );
-  }
-}
-
-class AppContent extends StatelessWidget {
-  final Widget child;
-
-  const AppContent({
-    Key key,
-    this.child,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        Container(
-          decoration: BoxDecoration(
-            color: kBackgroundColor,
-            border: Border(
-              right: BorderSide(
-                color: Colors.white,
-                width: 135,
-              ),
-            ),
-          ),
-        ),
-        this.child,
-      ],
     );
   }
 }

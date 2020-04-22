@@ -1,4 +1,3 @@
-<svg id="Up_Icon" data-name="Up Icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-  <rect id="Shape" width="24" height="24" fill="rgba(0,0,0,0)"/>
-  <path id="Combined_Shape" data-name="Combined Shape" d="M.293,10.9a1,1,0,0,1,0-1.415L7.778,2H1.707a1,1,0,1,1,0-2h8.485a1,1,0,0,1,1,.957l.354,8.132a1,1,0,1,1-2,.087L9.292,3.314,1.707,10.9a1,1,0,0,1-1.414,0Z" transform="translate(6.404 6.904)" fill="#f63b7b"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="11.546" height="11.193" viewBox="0 0 11.546 11.193">
+  <path id="Combined_Shape" data-name="Combined Shape" d="M.293,10.9a1,1,0,0,1,0-1.415L7.778,2H1.707a1,1,0,1,1,0-2h8.485a1,1,0,0,1,1,.957l.354,8.132a1,1,0,1,1-2,.087L9.292,3.314,1.707,10.9a1,1,0,0,1-1.414,0Z" fill="#f63b7b"/>
 </svg>

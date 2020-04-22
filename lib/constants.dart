@@ -12,10 +12,12 @@ const kGreenColor = Color(0xFF30C96B);
 const kRedColor = Color(0xFFEE6B8D);
 const kPurpleColor = Color(0xFFC482F9);
 const kBackgroundColor = Color(0xFFFBF8FF);
+const kLineColor = Color(0xFFEAEEF4);
 const kShadowColor1 = Color.fromRGBO(149, 190, 207, 0.50);
 const kShadowColor2 = Color(0xFFCFECF8);
 const kShadowColor3 = Color.fromRGBO(0, 0, 0, 0.10);
 const kShadowColor4 = Color.fromRGBO(207, 236, 248, 0.50);
+const kShadowColor5 = Color.fromRGBO(238, 226, 255, 0.70);
 
 // My Text Styles
 final kHeadingTextStyle = TextStyle(  
@@ -35,7 +37,7 @@ final kTitleTextStyle = TextStyle(
   color: kTextColor,
 );
 
-final kButtonTextStyle = TextStyle(
+final kBodyTextStyle = TextStyle(
   fontSize: ScreenUtil().setSp(13),
   color: kTextSecondaryColor,
 );
@@ -45,14 +47,21 @@ final kCaptionTextStyle = TextStyle(
   color: kTextSecondaryColor,
 );
 
+final kNumberTitleTextStyle = TextStyle(  
+  fontFamily: 'TTNorms',
+  fontSize: ScreenUtil().setSp(22),
+  fontWeight: FontWeight.w500,
+  color: kTextColor,
+);
+
 final kCardTextStyle = TextStyle(
   fontFamily: 'TTNorms',
   color: Colors.white,
   shadows: [
     BoxShadow(
       color: kShadowColor3,
-      blurRadius: kSpacingUnit.h,
-      offset: Offset(0, kSpacingUnit.h * 0.5),
+      blurRadius: kSpacingUnit.w,
+      offset: Offset(0, kSpacingUnit.w * 0.5),
     ),
   ],
 );

@@ -14,7 +14,7 @@ class BankCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin:
-          EdgeInsets.all(kSpacingUnit.h).copyWith(bottom: kSpacingUnit.h * 5),
+          EdgeInsets.all(kSpacingUnit.w).copyWith(bottom: kSpacingUnit.w * 5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         image: DecorationImage(
@@ -24,8 +24,8 @@ class BankCard extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             color: kShadowColor2,
-            blurRadius: kSpacingUnit.h * 3,
-            offset: Offset(0, kSpacingUnit.h * 2),
+            blurRadius: kSpacingUnit.w * 3,
+            offset: Offset(0, kSpacingUnit.w * 2),
           ),
         ],
       ),

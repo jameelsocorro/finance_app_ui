@@ -25,7 +25,7 @@ class TransactionItem extends StatelessWidget {
                   BoxShadow(
                     color: kShadowColor4,
                     blurRadius: 24,
-                    offset: Offset(0, kSpacingUnit.h),
+                    offset: Offset(0, kSpacingUnit.w),
                   )
                 ]),
             child: Center(
