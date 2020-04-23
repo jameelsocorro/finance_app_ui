@@ -18,7 +18,7 @@ class BankCard extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         image: DecorationImage(
-          image: AssetImage('assets/images/${this.cardDetail.background}.png'),
+          image: AssetImage(this.cardDetail.background),
           fit: BoxFit.cover,
         ),
         boxShadow: [
