@@ -2,7 +2,7 @@
 
 This repository is based on converting this mockup into a flutter app.
 
-![course app](assets/images/preview.png?raw=true)
+![finance app](assets/images/thumbnail.png?raw=true)
 
 ## Design Credit:
 https://www.uplabs.com/posts/banking-app-concept-1ba179ee-756b-4840-856a-8484c930cf43
