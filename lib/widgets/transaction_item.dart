@@ -65,8 +65,8 @@ class TransactionItem extends StatelessWidget {
                   style: kTitleTextStyle.copyWith(
                     fontWeight: FontWeight.w600,
                     color: this.transaction.value.isNegative
-                        ? Color(0xFFEE6B8D)
-                        : Color(0xFF30C96B),
+                        ? kRedColor
+                        : kGreenColor,
                   ),
                 ),
                 TextSpan(

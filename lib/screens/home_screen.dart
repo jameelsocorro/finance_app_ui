@@ -91,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
       children: <Widget>[
         CarouselSlider.builder(
           options: CarouselOptions(
-            height: 220,
+            height: 240.w,
             aspectRatio: 16 / 9,
             viewportFraction: 0.8,
             initialPage: _cardIndex,
